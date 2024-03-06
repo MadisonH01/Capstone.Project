@@ -16,6 +16,7 @@ function Register({ setToken }) {
     },
     address: {
       city: "",
+      number: "",
       street: "",
       zipcode: "",
     },
@@ -117,6 +118,16 @@ function Register({ setToken }) {
                 name="zipcode"
                 value={address.zipcode}
                 onChange={handleChange}
+              />
+            </label>
+            <label>
+              Phone
+              <input 
+              className="phone"
+              type="phone"
+              name="phone"
+              value={phone}
+              onChange={handleChange}
               />
             </label>
           </div>
