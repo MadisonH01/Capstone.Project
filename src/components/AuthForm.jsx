@@ -43,7 +43,7 @@ function Register({ setToken }) {
     } else {
       setToken(data.token);
       //navigate user to different page if successful
-      navigate("/");
+      navigate("/products");
     }
   };
 

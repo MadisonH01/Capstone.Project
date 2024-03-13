@@ -1,0 +1,21 @@
+.productList {
+    padding-top: 24px;
+  }
+  
+  .productList_div {
+    display: flex;
+  justify-content: space-around;
+  }
+  
+  .productCard {
+    max-width: 250px;
+    margin: 12px;
+    padding-top: 12px;
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow: 0 1px 6px -2px white;
+  }
+  
+  .productCard:hover {
+    transform: translateY(-5px);
+  }

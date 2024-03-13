@@ -1,0 +1,18 @@
+form,
+.formDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  margin: 0 12px;
+}
+
+.email {
+  margin-left: 48px;
+}
+
+.password {
+  margin-left: 18px;
+}

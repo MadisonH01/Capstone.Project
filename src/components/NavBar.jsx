@@ -1,6 +1,6 @@
-/*import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 //styles
-import "./styles/navbar.css";
+//import "./styles/navbar.css";
 
 function NavBar({ token, setToken }) {
   const navigate = useNavigate();
@@ -13,8 +13,6 @@ function NavBar({ token, setToken }) {
     return (
       <nav>
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/plant">Add Plant</NavLink>
-        <NavLink to="/user">Account</NavLink>
         <a onClick={logoutUser}>Logout</a>
       </nav>
     );
@@ -28,4 +26,4 @@ function NavBar({ token, setToken }) {
   );
 }
 
-export default NavBar; */
+export default NavBar;

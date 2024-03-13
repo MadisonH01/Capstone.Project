@@ -1,13 +1,13 @@
 import { NavLink } from "react-router-dom";
-import "./styles/plantList.css";
+//import "./styles/plantList.css";
 
 function ProductCard({ product }) {
-    const { product_id, img_url, title } = product;
+    const { id, image, title } = product;
   
     return (
-      <NavLink to={`/products/${product_id}`}>
+      <NavLink to={`/products/${id}`}>
         <section className="productCard">
-          <img src={img_url || product} />
+          <img src={image || product} />
           <h3>
             {title ? "Title:" : "Price"} {title || price}
           </h3>
