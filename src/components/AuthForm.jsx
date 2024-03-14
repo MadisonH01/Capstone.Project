@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 //RTK mutations
-import { useRegisterMutation, useLoginMutation } from "../redux/api";
+import { useRegisterMutation, useLoginMutation, useGetAllUsersQuery } from "../redux/api";
 //styles
 //
 
@@ -28,6 +28,7 @@ function Register({ setToken }) {
   const location = useLocation();
   const [register] = useRegisterMutation();
   const [login] = useLoginMutation();
+  const {data: users} = useGetAllUsersQuery();
 
   const isRegister = location.pathname === "/register";
 
@@ -42,8 +43,10 @@ function Register({ setToken }) {
       setError(error.data.message || error.data);
     } else {
       setToken(data.token);
+      
       //navigate user to different page if successful
-      navigate("/products");
+      console.log(users)
+      navigate(`/carts/user${id}`);
     }
   };
 

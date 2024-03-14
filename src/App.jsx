@@ -18,7 +18,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<ProductList setToken={token} />} />
                 <Route path="/products/:id" element={<ProductDetail token={token} />} />
-                <Route path="/authform" element={<AuthForm setToken={setToken} />} />
+                <Route path="/auth/login" element={<AuthForm setToken={setToken} />} />
             </Routes>
         </section>
     );

@@ -21,7 +21,7 @@ function NavBar({ token, setToken }) {
   return (
     <nav>
       <NavLink to="/">Home</NavLink>
-      <NavLink to="/login">Login</NavLink>
+      <NavLink to="/auth/login">Login</NavLink>
     </nav>
   );
 }
