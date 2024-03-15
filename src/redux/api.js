@@ -76,7 +76,11 @@ export const api = createApi({
         url: "/users"
       }),
     }),
-    getAllCategories: 
+    getAllCategories: builder.query({
+      query: () => ({
+        url: "/products/categories"
+      }),
+    }),
   }),
 });
 
@@ -90,4 +94,5 @@ export const {
   useAddProductToCartMutation,
   useUpdateCartMutation,
   useGetAllUsersQuery,
+  useGetAllCategoriesQuery,
 } = api;
