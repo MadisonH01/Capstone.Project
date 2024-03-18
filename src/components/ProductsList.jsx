@@ -5,11 +5,15 @@ import ProductCard from "./ProductCard";
 //react
 import React, { useState } from "react";
 //styles
-//import "./styles/productList.css";
+import "./styles/productList.css";
 
 function ProductList({ token }) {
   const { data = {}, error, isLoading } = useGetProductsQuery(token);
-  const { data: categoriesData = [], error: categoriesError, isLoading: categoriesLoading } = useGetAllCategoriesQuery();
+  const {
+    data: categoriesData = [],
+    error: categoriesError,
+    isLoading: categoriesLoading,
+  } = useGetAllCategoriesQuery();
   const [sortByPrice, setSortByPrice] = useState(false);
   const [sortOrder, setSortOrder] = useState("ascending");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -32,24 +36,30 @@ function ProductList({ token }) {
 
   const handleFilterByCategory = (category) => {
     setSelectedCategory(category);
-  }
- 
+  };
+
   return (
     <section className="productList">
-      <h2>Products</h2>
+      <h2 id="title">Products</h2>
       <button onClick={handleSortByPrice}>Sort by price</button>
       <select onChange={(e) => handleFilterByCategory(e.target.value)}>
-      <option value="all">All</option>
-      {categoriesData.map((category, index) => (
-        <option key={index} value={category}>
-            {category ? category.charAt(0).toUpperCase() + category.slice(1) : ""}
+        <option value="all">All</option>
+        {categoriesData.map((category, index) => (
+          <option key={index} value={category}>
+            {category
+              ? category.charAt(0).toUpperCase() + category.slice(1)
+              : ""}
           </option>
         ))}
       </select>
       <div className="productList_div">
-      {data
+        {data
           .slice()
-          .filter(product => selectedCategory === "all" || product.category === selectedCategory)
+          .filter(
+            (product) =>
+              selectedCategory === "all" ||
+              product.category === selectedCategory
+          )
           .sort((a, b) =>
             sortOrder === "ascending" ? a.price - b.price : b.price - a.price
           )

@@ -1,35 +1,40 @@
-const cart = [];
+import { useGetUserCartQuery } from "../redux/api";
+import CartItemCounter from "./CartItemCounter";
 
-function addToCart(item) {
-    cart.push(item);
-    updateCart();
+function Cart({ userId, token }) {
+  const {
+    data = {},
+    error,
+    isLoading,
+  } = useGetUserCartQuery({ token, userId });
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <h3>{error.data.message}</h3>;
+  }
+
+  if (data) {
+    const { title, price, image } = data;
+    return (
+      <section className="padding">
+        <h3>Price: {price}</h3>
+        <img src={image || products} />
+        <h2>
+          {title ? "Title:" : "Category"} {title || category}
+        </h2>
+      </section>
+    );
+  }
+
+  return (
+    <section className="padding">
+      <h2>Your cart!</h2>
+      <button>Checkout</button>
+    </section>
+  );
 }
 
-function removeFromCart(index) {
-    cart.splice(index, 1);
-    updateCart();
-}
-
-function updateCart() {
-    const cartItems = document.getElementById('cart-items');
-    cartItems.innerHTML = '';
-    let total = 0;
-
-    cart.forEach((item, index) => {
-        const li = document.createElement('li');
-        li.textContent = `${item.name} - $${item.price}`;
-        li.classList.add('cart-item');
-        const removeBtn = document.createElement('button');
-        removeBtn.textContent = 'Remove';
-        removeBtn.addEventListener('click', () => removeFromCart(index));
-        li.appendChild(removeBtn);
-        cartItems.appendChild(li);
-        total += item.price;
-    });
-
-    document.getElementById('cart-total').textContent = `Total: $${total.toFixed(2)}`;
-}
-
-document.getElementById('checkout-btn').addEventListener('click', () => {
-    // Add checkout functionality
-});
+export default Cart;

@@ -24,8 +24,8 @@ export const api = createApi({
       providesTags: ["User"],
     }),
     getUserCart: builder.query({
-      query: (token) => ({
-        url: `/carts/user/${id}`,
+      query: (token, userId) => ({
+        url: `/carts/user/${userId}`,
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -61,7 +61,7 @@ export const api = createApi({
         method: "POST",
         body,
       }),
-      providesTags: ["Product"]
+      providesTags: ["Product"],
     }),
     updateCart: builder.mutation({
       query: (body) => ({
@@ -69,16 +69,16 @@ export const api = createApi({
         method: "PUT",
         body,
       }),
-      providesTags: ["Product"]
+      providesTags: ["Product"],
     }),
     getAllUsers: builder.query({
       query: () => ({
-        url: "/users"
+        url: "/users",
       }),
     }),
     getAllCategories: builder.query({
       query: () => ({
-        url: "/products/categories"
+        url: "/products/categories",
       }),
     }),
   }),

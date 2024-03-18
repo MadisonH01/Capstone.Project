@@ -3,20 +3,15 @@ nav {
     justify-content: flex-end;
     position: absolute;
     top: 24px;
-    right: 24px;
+    right: 10px;
   }
   
   nav > a {
     margin: 0 24px;
-    color: white;
+    color: rgb(0, 0, 0);
     text-decoration: none;
   }
   
   a:hover {
-    cursor: grab;
-  }
-  
-  .active {
-    color: #646cff;
-    text-decoration: underline;
+    cursor: pointer;
   }

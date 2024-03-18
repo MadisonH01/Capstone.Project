@@ -43,7 +43,7 @@ function Account({ token }) {
 
   return (
     <section>
-        <h3>Not found!</h3>
+      <h3>Not found!</h3>
     </section>
   );
 }

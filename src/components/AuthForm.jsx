@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 //RTK mutations
-import { useRegisterMutation, useLoginMutation, useGetAllUsersQuery } from "../redux/api";
+import {
+  useRegisterMutation,
+  useLoginMutation,
+  useGetAllUsersQuery,
+} from "../redux/api";
 //styles
-//
+import "./styles/auth.css";
 
-function Register({ setToken }) {
+function Register({ setToken, setUserId }) {
   const initialForm = {
     email: "",
     username: "",
@@ -28,7 +32,7 @@ function Register({ setToken }) {
   const location = useLocation();
   const [register] = useRegisterMutation();
   const [login] = useLoginMutation();
-  const {data: users} = useGetAllUsersQuery();
+  const { data: users } = useGetAllUsersQuery();
 
   const isRegister = location.pathname === "/register";
 
@@ -43,10 +47,15 @@ function Register({ setToken }) {
       setError(error.data.message || error.data);
     } else {
       setToken(data.token);
-      
+      let userId = 0;
+      users.forEach((user) => {
+        if (user.username === username) {
+          userId = user.id;
+        }
+      });
       //navigate user to different page if successful
-      console.log(users)
-      navigate(`/carts/user${id}`);
+      setUserId(userId);
+      navigate(`/`);
     }
   };
 
@@ -125,12 +134,12 @@ function Register({ setToken }) {
             </label>
             <label>
               Phone
-              <input 
-              className="phone"
-              type="phone"
-              name="phone"
-              value={phone}
-              onChange={handleChange}
+              <input
+                className="phone"
+                type="phone"
+                name="phone"
+                value={phone}
+                onChange={handleChange}
               />
             </label>
           </div>

@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 //styles
-//import "./styles/navbar.css";
+import "./styles/navbar.css";
 
 function NavBar({ token, setToken }) {
   const navigate = useNavigate();
@@ -13,7 +13,8 @@ function NavBar({ token, setToken }) {
     return (
       <nav>
         <NavLink to="/">Home</NavLink>
-        <a onClick={logoutUser}>Logout</a>
+        <NavLink onClick={logoutUser}>Logout</NavLink>
+        <NavLink to="/cart">Cart</NavLink>
       </nav>
     );
   }
