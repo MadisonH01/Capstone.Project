@@ -1,11 +1,25 @@
+import React, { useState } from "react";
 
-function CartItemCounter() {
+function CartItemCounter({ id, addProductToCart }) {
+  const [quantity, setQuantity] = useState(1);
 
-    return (
-        <div>
-        <input type="number" min="0" max="10" />
-        </div>
-    )
+  const handleQuantityChange = (event) => {
+    const newQuantity = parseInt(event.target.value);
+    setQuantity(newQuantity);
+    addProductToCart(id, newQuantity);
+  };
+
+  return (
+    <div>
+      <input
+        type="number"
+        min="0"
+        max="10"
+        value={quantity}
+        onChange={handleQuantityChange}
+      />
+    </div>
+  );
 }
 
 export default CartItemCounter;

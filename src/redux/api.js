@@ -24,7 +24,7 @@ export const api = createApi({
       providesTags: ["User"],
     }),
     getUserCart: builder.query({
-      query: (token, userId) => ({
+      query: ({ token, userId }) => ({
         url: `/carts/user/${userId}`,
         headers: {
           authorization: `Bearer ${token}`,
@@ -64,7 +64,7 @@ export const api = createApi({
       providesTags: ["Product"],
     }),
     updateCart: builder.mutation({
-      query: (body) => ({
+      query: (id, body) => ({
         url: `/carts/${id}`,
         method: "PUT",
         body,

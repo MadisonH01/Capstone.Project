@@ -47,14 +47,12 @@ function Register({ setToken, setUserId }) {
       setError(error.data.message || error.data);
     } else {
       setToken(data.token);
-      let userId = 0;
       users.forEach((user) => {
-        if (user.username === username) {
-          userId = user.id;
+        if (user.username === username && user.id) {
+          setUserId(user.id);
         }
       });
       //navigate user to different page if successful
-      setUserId(userId);
       navigate(`/`);
     }
   };

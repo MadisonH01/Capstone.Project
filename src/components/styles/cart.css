@@ -1,0 +1,14 @@
+img {
+    width: 30%;
+  }
+
+  #title {
+    font-size: xx-large;
+  }
+
+  section {
+    display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  }
+  

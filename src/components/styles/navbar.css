@@ -1,17 +1,17 @@
 nav {
-    display: flex;
-    justify-content: flex-end;
-    position: absolute;
-    top: 24px;
-    right: 10px;
-  }
-  
-  nav > a {
-    margin: 0 24px;
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-  }
-  
-  a:hover {
-    cursor: pointer;
-  }
+  display: flex;
+  justify-content: space-evenly;
+  position: absolute;
+  top: 24px;
+  right: 10px;
+}
+
+nav > a {
+  margin: 0 24px;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+a:hover {
+  cursor: pointer;
+}

@@ -41,8 +41,8 @@ function ProductList({ token }) {
   return (
     <section className="productList">
       <h2 id="title">Products</h2>
-      <button onClick={handleSortByPrice}>Sort by price</button>
-      <select onChange={(e) => handleFilterByCategory(e.target.value)}>
+      <button id="sortButton" onClick={handleSortByPrice}>Sort by price</button>
+      <select id="filterButton" onChange={(e) => handleFilterByCategory(e.target.value)}>
         <option value="all">All</option>
         {categoriesData.map((category, index) => (
           <option key={index} value={category}>

@@ -1,7 +1,17 @@
 import { useGetUserCartQuery } from "../redux/api";
 import CartItemCounter from "./CartItemCounter";
+import Checkout from "./Checkout";
+import { Link } from "react-router-dom";
+import ProductCard from "./ProductCard";
+import { useGetProductByIdQuery } from "../redux/api";
+import CartItem from "./CartItem";
+import "./styles/cart.css";
 
-function Cart({ userId, token }) {
+function Cart({ token, userId }) {
+  if (!userId) {
+    return null;
+  }
+
   const {
     data = {},
     error,
@@ -13,28 +23,35 @@ function Cart({ userId, token }) {
   }
 
   if (error) {
-    return <h3>{error.data.message}</h3>;
+    return <h3>{error.data.message || "An error occurred."}</h3>;
   }
 
-  if (data) {
-    const { title, price, image } = data;
+  if (data.length === 0) {
     return (
-      <section className="padding">
-        <h3>Price: {price}</h3>
-        <img src={image || products} />
-        <h2>
-          {title ? "Title:" : "Category"} {title || category}
-        </h2>
+      <section>
+        <h2>Your cart is empty!</h2>
       </section>
     );
   }
 
-  return (
-    <section className="padding">
-      <h2>Your cart!</h2>
-      <button>Checkout</button>
-    </section>
-  );
+  if (data) {
+    // product.productId
+    return (
+      <section>
+        <h1 id="title"> Your cart </h1>
+        {data[0].products.map((product) => (
+          <CartItem
+            key={product.productId}
+            productId={product.productId}
+            token={token}
+          />
+        ))}
+        <Link to="/checkout">
+          <button id="checkout-btn">Checkout</button>
+        </Link>
+      </section>
+    );
+  }
 }
 
 export default Cart;
